@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 
 require('dotenv').config();
-// parse requests of content-type - application / json;
 
 let dbConnect = require('./dbConnect');
 let userRoutes = require('./routes/userRoutes');
 let postRoutes = require('./routes/postRoutes');
 let commentRoutes = require('./routes/commentRoutes');
 
+// parse requests of content-type - application / json
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
