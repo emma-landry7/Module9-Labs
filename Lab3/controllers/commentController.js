@@ -1,9 +1,9 @@
 'use strict'
 const Models = require('../models')
 
-// finds all posts in DB, then sends array as response
-const getPosts = (res) => {
-    Models.Post.findAll({})
+// finds all comments in DB, then sends array as response
+const getComments = (res) => {
+    Models.Comment.findAll({})
         .then(data => res.status(200).send({ result: 200, data: data }))
         .catch(err => {
             console.log(err)
@@ -11,9 +11,9 @@ const getPosts = (res) => {
         })
 }
 
-// uses JSON from req.body to create new post in DB
-const createPost = (data, res) => {
-    Models.Post.create(data)
+// uses JSON from req.body to create new comment in DB
+const createComment = (data, res) => {
+    Models.Comment.create(data)
         .then(data => res.status(201).send({ result: 201, data: data }))
         .catch(err => {
             console.log(err)
@@ -21,9 +21,9 @@ const createPost = (data, res) => {
         })
 }
 
-// uses JSON from req.body to update post ID from req.params.id
-const updatePost = (req, res) => {
-    Models.Post.update(req.body, { where: { id: req.params.id } })
+// uses JSON from req.body to update comment ID from req.params.id
+const updateComment = (req, res) => {
+    Models.Comment.update(req.body, { where: { id: req.params.id } })
         .then(data => res.status(200).send({ result: 200, data: data }))
         .catch(err => {
             console.log(err)
@@ -31,9 +31,9 @@ const updatePost = (req, res) => {
         })
 }
 
-// deletes post from req.params.id
-const deletePost = (req, res) => {
-    Models.Post.destroy({ where: { id: req.params.id } })
+// deletes comment from req.params.id
+const deleteComment = (req, res) => {
+    Models.Comment.destroy({ where: { id: req.params.id } })
         .then(data => res.status(200).send({ result: 200, data: data }))
         .catch(err => {
             console.log(err)
@@ -42,5 +42,5 @@ const deletePost = (req, res) => {
 }
 
 module.exports = {
-    getPosts, createPost, updatePost, deletePost
+    getComments, createComment, updateComment, deleteComment
 }
